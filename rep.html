@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>評価計算</title>
+</head>
+<body>
+  <h1>評価計算</h1>
+  <div>
+    <label for="AA">出席(100点満点):</label>
+    <input type="number" id="AA" min="0" max="100">
+  </div>
+  <div>
+    <label for="PA">AOJ(100点満点):</label>
+    <input type="number" id="PA" min="0" max="100">
+  </div>
+  <div>
+    <label for="PE">ペーパー(120点満点):</label>
+    <input type="number" id="PE" min="0" max="120">
+  </div>
+  <div>
+    <label for="CE">コーディング(120点満点):</label>
+    <input type="number" id="CE" min="0" max="120">
+  </div>
+  <button onclick="calculateScore()">計算</button>
+  <div id="result"></div>
+
+  <script>
+    function calculateScore() {
+      var AA = parseInt(document.getElementById('AA').value);
+      var PA = parseInt(document.getElementById('PA').value);
+      var PE = parseInt(document.getElementById('PE').value);
+      var CE = parseInt(document.getElementById('CE').value);
+
+      var sum = Math.sqrt(AA * PE) * Math.sqrt(PA * CE);
+      var finalScore = Math.sqrt(sum);
+
+      document.getElementById('result').innerText = "評価点: " + finalScore.toFixed(2);
+    }
+  </script>
+</body>
+</html>
